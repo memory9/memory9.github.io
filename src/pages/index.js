@@ -1,10 +1,12 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import Bio from '../components/bio'
+import Layout from '../components/layout'
+import Footer from '../components/footer'
+import SEO from '../components/seo'
+import { rhythm } from '../utils/typography'
+import { formatReadingTime } from '../utils/helper'
 
 class BlogIndex extends React.Component {
   render() {
@@ -18,29 +20,44 @@ class BlogIndex extends React.Component {
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </div>
-          )
-        })}
+        <aside>
+          <Bio />
+        </aside>
+        <main>
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <article key={node.fields.slug}>
+                <header>
+                  <h3
+                    style={{
+                      fontSize: rhythm(1),
+                      marginBottom: rhythm(1 / 4),
+                    }}
+                  >
+                    <Link
+                      style={{ boxShadow: `none` }}
+                      to={node.fields.slug}
+                      rel="bookmark"
+                    >
+                      {title}
+                    </Link>
+                  </h3>
+                  <small>
+                    {node.frontmatter.date}
+                    {` • ${formatReadingTime(node.timeToRead)}`}
+                  </small>
+                </header>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                />
+              </article>
+            )
+          })}
+        </main>
+        <Footer />
       </Layout>
     )
   }
@@ -62,6 +79,7 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+          timeToRead
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title

@@ -1,10 +1,32 @@
-import Typography from "typography"
-import Wordpress2016 from "typography-theme-wordpress-2016"
+import Typography from 'typography'
+import Wordpress2016 from 'typography-theme-wordpress-2016'
+
+import './global.css'
 
 Wordpress2016.overrideThemeStyles = () => {
   return {
-    "a.gatsby-resp-image-link": {
+    'a.gatsby-resp-image-link': {
       boxShadow: `none`,
+    },
+    a: {
+      color: 'var(--textLink)',
+    },
+    hr: {
+      background: 'var(--hr)',
+    },
+    'p code': {
+      fontSize: '1.1rem',
+    },
+    'h1 code, h2 code, h3 code, h4 code, h5 code, h6 code': {
+      fontSize: 'inherit',
+    },
+    'li code': {
+      fontSize: '1.1rem',
+    },
+    blockquote: {
+      color: 'inherit',
+      borderLeftColor: 'inherit',
+      opacity: '0.8',
     },
   }
 }

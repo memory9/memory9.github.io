@@ -3,9 +3,9 @@ module.exports = {
     title: `Cube Blog`,
     author: `memory`,
     description: `A Personal blog by mingrui.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://memory9.github.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `memory9`,
     },
   },
   plugins: [
@@ -42,6 +42,12 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: '_blank',
+            },
+          },
         ],
       },
     },
@@ -57,13 +63,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Cube Blog`,
+        short_name: `Cube`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/icon.png`,
       },
     },
     `gatsby-plugin-offline`,
@@ -74,5 +80,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-plugin-catch-links`,
   ],
 }
