@@ -43,6 +43,8 @@
     "gh-pages": "^2.0.1",
     "husky": "^2.1.0",
     "lint-staged": "^8.1.5",
+    "moment": "^2.24.0",
+    "plop": "^2.4.0",
     "prettier": "^1.17.0"
   },
   "homepage": "http://memory9.github.io",
@@ -59,7 +61,8 @@
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "serve": "gatsby serve",
     "start": "npm run develop",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "generate": "plop --plopfile ./generator/plopfile.js"
   },
   "husky": {
     "hooks": {
