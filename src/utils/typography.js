@@ -27,6 +27,7 @@ Wordpress2016.overrideThemeStyles = () => {
       color: 'inherit',
       borderLeftColor: 'inherit',
       opacity: '0.8',
+      fontSize: '1.1rem',
     },
   }
 }

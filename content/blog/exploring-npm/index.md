@@ -18,7 +18,7 @@ npm install <packageName>
 
 > `node_modules` 路径查找机制：默认情况下，模块查找对应的依赖包时，`nodejs` 会尝试从当前模块所在的目录开始，尝试在它的  `node_modules` 文件夹里加载相应的模块，如果没有找到，那么就再向上一级目录移动，直到到达全局安装路径中的 `node_modules` 为止。
 
-#### npm 5.x 安装组织 node_modules
+### npm 5.x 安装组织 node_modules
 
 * 扁平化安装
 
@@ -56,14 +56,14 @@ npm install <packageName>
 
 ## 依赖包
 
-#### 依赖包的分类
+### 依赖包的分类
 
 * **dependencies** 业务依赖
 
   依赖项属于线上的一部分，例如 `react`、`material-ui` 等等，供生产环境使用。
 
   ```shell
-  npm install <packageName> --save
+  npm [install|-i] <packageName> [--save|-S]
   ```
 
   > npm 5.x 之后，直接执行 `npm i <packageName>` 即可
@@ -73,7 +73,7 @@ npm install <packageName>
   依赖项只在项目开发时需要，不属于线上代码的一部分，例如 `webpack`、`babel` 等等
 
   ```shell
-  npm install <packageName> --save-dev
+  npm [install|-i] <packageName> [--save-dev|-D]
   ```
 
 * peerDependencies 同伴依赖
@@ -88,7 +88,7 @@ npm install <packageName>
 
 
 
-#### 依赖包的版本号
+### 依赖包的版本号
 
 采用 [semver](https://semver.org/lang/zh-CN/) 规范作为依赖版本管理方案，格式一般为：**主版本号.次版本号.修订号(x.y.z)**
 
@@ -128,7 +128,7 @@ npm install <packageName>
 
 
 
-#### 依赖包的版本管理
+### 依赖包的版本管理
 
 ```shell
 # 更新某模块主版本下的最新版本
@@ -157,7 +157,7 @@ npm 可以在 `package.json` 文件中，使用 `scripts` 字段定义脚本命�
 }
 ```
 
-#### 基本原理
+### 基本原理
 
 每次执行 `npm run` 时，会自动新建一个 Shell，在这个 Shell 中执行指定的脚本命令。
 
@@ -169,25 +169,25 @@ npm 可以在 `package.json` 文件中，使用 `scripts` 字段定义脚本命�
 
 
 
-#### 传参
+### 传参
 
 除了第一个可执行的命令，以空格分割的任何字符串（除了一些 shell 的语法）都是参数，并且都能通过`process.argv` 属性访问。
 
 > process.argv属性返回一个数组，这个数组包含了启动node进程时的命令行参数。第一个元素为启动node 进程的可执行文件的绝对路径名[process.execPath](https://link.juejin.im?target=http%3A%2F%2Fnodejs.cn%2Fapi%2Fprocess.html%23process_process_execpath)，第二个元素为当前执行的JavaScript文件路径。剩余的元素为其他命令行参数。
 
 ```shell
-npm run serve --params     // 参数params将转化成process.env.npm_config_params = true
-npm run serve --params=123 // 参数params将转化成process.env.npm_config_params = 123
-npm run serve -params      // 等同于--params参数
+npm run serve --params     # 参数params将转化成process.env.npm_config_params = true
+npm run serve --params=123 # 参数params将转化成process.env.npm_config_params = 123
+npm run serve -params      # 等同于--params参数
 
-npm run serve -- --params  // 将--params参数添加到process.env.argv数组中
-npm run serve params       // 将params参数添加到process.env.argv数组中
-npm run serve -- params    // 将params参数添加到process.env.argv数组中
+npm run serve -- --params  # 将--params参数添加到process.env.argv数组中
+npm run serve params       # 将params参数添加到process.env.argv数组中
+npm run serve -- params    # 将params参数添加到process.env.argv数组中
 ```
 
 
 
-#### 通配符
+### 通配符
 
 npm 脚本即 Shell 脚本，所以可以使用 Shell 通配符。
 
@@ -200,9 +200,9 @@ npm 脚本即 Shell 脚本，所以可以使用 Shell 通配符。
 
 
 
-#### 多命令运行
+### 多命令运行
 
-##### 串行执行
+#### 串行执行
 
 ```shell
 npm run script1 && npm run script2
@@ -212,7 +212,7 @@ npm run script1 && npm run script2
 
 
 
-##### 并行执行
+#### 并行执行
 
 多个任务可以同时的平行执行，使用 `&` 符号来连接。
 
@@ -222,7 +222,7 @@ npm run script1 & npm run script2
 
 
 
-#### env 环境变量
+### env 环境变量
 
 执行 `npm scripts` 时，`npm` 会设置一些特殊的 `env` 环境变量。`package.json` 中的所有字段都会被设置为以 `npm_package_` 开头的环境变量。例如使用 ```process.env.npm_package_name``` 可以获取到 `package.json` 中 `name` 字段的值。```process.env.npm_lifecycle_event``` 表示当前正在运行的脚本名称。
 
@@ -230,19 +230,207 @@ npm run script1 & npm run script2
 
 
 
-#### 指令钩子
+### 指令钩子
 
 npm 脚本有 `pre` 和 `post` 两个钩子。例如：`build` 脚本命令的钩子就是 `prebuild` 和 `postbuild`。
 
+在执行  `npm run build` 命令时，就会依次执行 `npm run prebuild`、`npm run build`、`npm run postbuild`。
+
+可以结合 `process.env.npm_lifecycle_event` 一起使用。
 
 
 
+## npm 配置项
+
+### 优先级
+
+1. Command Line
+
+2. env 环境变量
+
+3. npmrc 文件
+
+   * 项目级
+
+     只作用在本项目下，其他项目中不生效。
+
+   * 用户级
+
+     `~/.npmrc`  使用 `npm config get userconfig` 可以查看存放的路径。
+
+   * 全局级
+
+     `$PREFIX/etc/npmrc` 使用 `npm config get globalconfig` 可以查看存放的路径。
+
+
+
+### npm config 指令
+
+* set
+
+```shell
+# 如果 key 不存在，那么会将新增到配置中；如果省略 value，那么会将 key 设置为 true
+npm config set <key> <value> [-g|--global]
+
+# 指定 npm 包来源
+npm config set registry <url>
+```
+
+* get
+
+```shell
+npm config get <key>
+```
+
+* delete
+
+```shell
+npm config delete <key> # 不能删除项目级的 .npmrc 文件里的配置项
+```
+
+* list
+
+```shell
+npm config list [-l|--json] # 查看所有配置项
+```
+
+* edit
+
+```shell
+npm config edit [-g|--global] # 编辑器中打开配置文件
+```
+
+更多默认配置参见[npm config](https://link.juejin.im/?target=https%3A%2F%2Fdocs.npmjs.com%2Fmisc%2Fconfig)
+
+
+
+## npm 工程管理
+
+### 项目版本号管理
+
+`package.json` 中的 `version` 字段代表的是该项目的版本号。
+
+尽量使用 `npm version` 指令来自动更新 `version`
+
+```shell
+npm version (v)1.2.3  # 显示设置版本号为 1.2.3 
+npm version major  # 大版本号加 1，其余版本号归 0
+npm version minor  # 小版本号加 1，修订号归 0
+npm version patch  # 修订号加 1
+```
+
+
+
+还可以创建预发布版本：
+
+```shell
+# 当前版本号为 1.2.3
+npm version prepatch  # 版本号变为 1.2.4-0，也就是 1.2.4 版本的第一个预发布版本
+npm version preminor  # 版本号变为 1.3.0-0，也就是 1.3.0 版本的第一个预发布版本
+npm version premajor  # 版本号变为 2.0.0-0，也就是 2.0.0 版本的第一个预发布版本
+npm version prerelease  # 版本号变为 2.0.0-1，也就是使预发布版本号加一
+```
+
+
+
+**在 git 环境中，执行 npm version 修改版本号之后，还会默认执行 git add -> git commit -> git tag 操作**
+
+其 commit message 默认是自动修改完成的版本号，可以通过添加 -m/—message 选项来自定义 commit message：
+
+```shell
+npm version minor -m "feat(version): upgrade to %s for reasons" # %s 会自动替换为新版本号
+```
+
+如果不想在 git 仓库中打上版本 tag，可以在指令中使用 `--no-git-tag-version`
+
+如果想默认不影响 git 仓库，可以在 npm 设置中禁止：
+
+```shell
+npm config set git-tag-version false # 不自动打 tag
+npm config set commit-hooks false    # 不自动 commit
+```
+
+
+
+### 域级包管理
+
+`package.json` 中的依赖有两种形式：
+
+```json
+"devDependencies": {
+  "@commitlint/cli": "^7.2.1",
+  "commitizen": "^3.0.4"
+}
+```
+
+以 `@` 开头的包名，是一个[域级包](https://docs.npmjs.com/misc/scope#publishing-public-scoped-packages-to-the-public-npm-registry)，作用是将一些 packages 集中在一个命名空间下，一方面可以集中管理，另一方面也可以防止与其他依赖包产生命名冲突。
+
+
+
+#### 域级包的发布
+
+* 在项目的 package.json 的 name 属性中添加 scope 相关的声明，可以通过指令添加：
+
+```shell
+npm init --scope=scopeName -y
+```
+
+package.json 变为：
+
+```json
+{
+  "name": "@scopeName/package"
+}
+```
+
+* 由于用 `@` 声明了该包，npm 会将其认定为私有包，而在 npm 上托管私有包需要收费，所以可以在发布时添加`--access=public` 参数告知 `npm` 这不是私有包。
+
+```shell
+npm publish --access=public
+```
+
+> 安装域级包时需要按照域级包全名来安装。
+
+
+
+## 其它
+
+### 模块全局化
+
+假设你在开发一个模块 `A`，同时需要在另外一个项目 `B` 中测试它，当然你可以将该模块的代码拷贝到需要使用它的项目中，但这也不是理想的方法，可以在模块 `A` 的目录下执行：
+
+```shell
+npm link
+```
+
+`npm link` 命令通过链接目录和可执行文件，实现任意位置的`npm`包命令的全局可执行。
+
+`npm link` 主要做了两件事：
+
+1. 为目标 `npm` 模块创建软链接，将其链接到全局 `node` 模块安装路径 `/usr/local/lib/node_modules/`
+2. 为目标 `npm `模块的可执行 `bin` 文件创建软链接，将其链接到全局 `node` 命令安装路径 `/usr/local/bin/`
+
+
+
+### 依赖锁定
+
+`npm` 默认安装模块时，会通过脱字符 `^` 来限定所安装模块的主版本号。可以配置 `npm` 通过波浪符 `~` 来限定安装模块版本号：
+
+```shell
+npm config set save-prefix="~"
+```
+
+也可以配置仅安装精确版本号的模块
+
+```shell
+npm config set save-exact true
+```
 
 
 
 ### 参考
 
-* [前端工程化（5）：你所需要的npm知识储备都在这了](<https://juejin.im/post/5d08d3d3f265da1b7e103a4d>)
+* [前端工程化（5）：你所需要的npm知识储备都在这了](https://juejin.im/post/5d08d3d3f265da1b7e103a4d)
 
 * [npm 模块安装机制简介](http://www.ruanyifeng.com/blog/2016/01/npm-install.html)
 * [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
