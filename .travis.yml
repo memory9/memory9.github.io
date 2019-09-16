@@ -6,7 +6,7 @@ notifications:
   email:
     recipients:
       - 474562318@qq.com
-    on_success: always
+    on_success: never
     on_failure: always
 node_js:
   - '11'
