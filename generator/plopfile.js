@@ -7,7 +7,7 @@ module.exports = (plop) => {
       {
         type: 'input',
         name: 'title',
-        message: 'Please input your post tile.',
+        message: 'Please input your post title.',
         validate: (value) => {
           if (/.+/.test(value)) {
             return postExists(value) ? 'A post with this name is already exists' : true
