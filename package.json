@@ -60,7 +60,7 @@
     "format": "prettier --write '{gatsby-*.js,src/**/*.{js,jsx,json,css}}'",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "serve": "gatsby serve",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "generate": "plop --plopfile ./generator/plopfile.js"
   },

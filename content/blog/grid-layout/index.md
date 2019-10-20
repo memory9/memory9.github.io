@@ -141,7 +141,7 @@ grid area 四条网格线包围的总空间。网格区域可以由任意数量�
 ### 增加 fallback support
 
 1. 先写回退代码， 然后使用较新属性覆写。
-```
+```css
   .selector {property: fallback-value;property: actual-value;}
 ```
 2. 先写回退代码，然后在 `@support` 中覆写。如果需要的话可以在 `@support` 中重置属性查看效果。
@@ -182,6 +182,8 @@ grid area 四条网格线包围的总空间。网格区域可以由任意数量�
     ( transform-style: preserve ) or ( -moz-transform-style: preserve )
 ```
 
-参考
+## 参考
+
 [CSS Grid 网格布局教程](http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html)
+
 [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid)
