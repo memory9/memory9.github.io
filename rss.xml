@@ -1,33 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Cube Blog]]></title><description><![CDATA[A Personal blog by mingrui.]]></description><link>https://memory9.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Wed, 25 Sep 2019 12:17:48 GMT</lastBuildDate><item><title><![CDATA[grid-layout]]></title><description><![CDATA[在处理一维布局时，我们一般会采用 flex 布局；而在做二维布局时，grid 布局是一个好的选择。基本概念Grid 布局，即网格布局，是一种基于二维网格的布局系统。grid container 所有网格项目的父项。grid item 网格项目。grid line…]]></description><link>https://memory9.github.io//grid-layout/</link><guid isPermaLink="false">https://memory9.github.io//grid-layout/</guid><pubDate>Wed, 25 Sep 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;在处理一维布局时，我们一般会采用 flex 布局；而在做二维布局时，grid 布局是一个好的选择。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Cube Blog]]></title><description><![CDATA[A Personal blog by mingrui.]]></description><link>https://memory9.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 20 Oct 2019 08:05:45 GMT</lastBuildDate><item><title><![CDATA[React 项目中集成 eslint 与 prettier]]></title><description><![CDATA[An introduction of building a react project with eslint and prettier integration. Eslint 目标：检验代码、保证代码的一致性，避免错误。 作用：提供了 ECMAScript…]]></description><link>https://memory9.github.io/react-with-eslint-and-prettier/</link><guid isPermaLink="false">https://memory9.github.io/react-with-eslint-and-prettier/</guid><pubDate>Sun, 20 Oct 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;An introduction of building a react project with eslint and prettier integration.&lt;/p&gt;
+&lt;h2&gt;Eslint&lt;/h2&gt;
+&lt;p&gt;目标：检验代码、保证代码的一致性，避免错误。&lt;/p&gt;
+&lt;p&gt;作用：提供了 ECMAScript 规范的代码校验，我们可以使用开源的配置方案，这里采用的是 &lt;code class=&quot;language-text&quot;&gt;eslint-config-airbnb&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;使用的几个插件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;eslint-plugin-import 校验 import/export 语法，防止错误拼写文件路径和导出名称&lt;/li&gt;
+&lt;li&gt;eslint-plugin-jsx-a11y 提供 jsx 元素可访问性校验&lt;/li&gt;
+&lt;li&gt;eslint-plugin-react 校验 react&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;eslint-plugin-react-hooks 根据 Hooks API 校验 Hooks 的使用&lt;/p&gt;
+&lt;p&gt;./node_muodules/bin/eslint —init&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;根据项目的需求，选择相应的配置，执行完毕后根目录下会多一个 &lt;code class=&quot;language-text&quot;&gt;./eslintrc.js&lt;/code&gt; 文件。&lt;/p&gt;
+&lt;p&gt;可以在此文件中声明你想要的规则。&lt;/p&gt;
+&lt;p&gt;Eslint 在配置中有一个 extends 的配置项，作用是将其他人写好的规则集成到 eslint 中，后面的规则优先级大于前面的规则。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// .eslintrc.js&lt;/span&gt;
+&lt;span class=&quot;token string&quot;&gt;&apos;extends&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;react-app&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;airbnb&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;plugin:prettier/recommended&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这三个规则的优先级就是 prettier &gt; airbnb &gt; react-app，以此类推。&lt;/p&gt;
+&lt;h2&gt;Prettier&lt;/h2&gt;
+&lt;p&gt;用途：统一代码风格。&lt;/p&gt;
+&lt;p&gt;使用的插件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;eslint-config-prettier&lt;/li&gt;
+&lt;li&gt;eslint-plugin-prettier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在 extends 中配置 &lt;code class=&quot;language-text&quot;&gt;plugin:prettier/recommended&lt;/code&gt; 相当于同时配置了&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;  &lt;span class=&quot;token string&quot;&gt;&apos;extends&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;prettier&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&apos;plugins&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;prettier&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&apos;rules&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;prettier/prettier&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;error&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;提交时校验代码&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;husky 处理 pre-commit、pre-push 等 githooks 的工具&lt;/li&gt;
+&lt;li&gt;lint-staged 对 git 暂存区的代码，运行 linters 的工具&lt;/li&gt;
+&lt;li&gt;commitlint 对提交信息进行规范约束&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装与参考配置：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; --dev husky lint-staged @commitlint/cli @commitlint/config-conventional&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// commitlint.config.js&lt;/span&gt;
+module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;@commitlint/config-conventional&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;@commitlint/config-conventional&lt;/code&gt; 是遵从 angular 团队规范的 commit spec。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// package.json&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	...
+	&lt;span class=&quot;token property&quot;&gt;&quot;husky&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token property&quot;&gt;&quot;hooks&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;token property&quot;&gt;&quot;pre-commit&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;lint-staged&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;token property&quot;&gt;&quot;commit-msg&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;commitlint -E HUSKY_GIT_PARAMS&quot;&lt;/span&gt;
+		&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token property&quot;&gt;&quot;lint-staged&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token property&quot;&gt;&quot;src/*.{js, jsx, ts,tsx}&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+			&lt;span class=&quot;token string&quot;&gt;&quot;node_modules/.bin/prettier --write&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;token string&quot;&gt;&quot;node_modules/.bin/eslint --fix&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;token string&quot;&gt;&quot;git add&quot;&lt;/span&gt;
+		&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+		&lt;span class=&quot;token property&quot;&gt;&quot;src/*.{css, scss, less, json, html, md, markdown}&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+			&lt;span class=&quot;token string&quot;&gt;&quot;node_modules/.bin/prettier --write&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;token string&quot;&gt;&quot;git add&quot;&lt;/span&gt;
+		&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	...
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;参考&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://juejin.im/post/5d7b9863e51d456212049214&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;如何在 React 项目中整合 Eslint 和 Prettier&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://juejin.im/post/5d3da1556fb9a07ed6581b82&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;react 配置 eslint+airbnb+Prettier&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://juejin.im/post/5afc5242f265da0b7f44bee4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;优雅的提交你的 Git Commit Message&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[grid-layout]]></title><description><![CDATA[在处理一维布局时，我们一般会采用 flex 布局；而在做二维布局时，grid 布局是一个好的选择。 基本概念 Grid 布局，即网格布局，是一种基于二维网格的布局系统。 grid container 所有网格项目的父项。 grid item 网格项目。 grid line…]]></description><link>https://memory9.github.io/grid-layout/</link><guid isPermaLink="false">https://memory9.github.io/grid-layout/</guid><pubDate>Wed, 25 Sep 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;在处理一维布局时，我们一般会采用 flex 布局；而在做二维布局时，grid 布局是一个好的选择。&lt;/p&gt;
 &lt;h1&gt;基本概念&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;Grid 布局，即网格布局，是一种基于二维网格的布局系统。&lt;/p&gt;
 &lt;p&gt;grid container 所有网格项目的父项。&lt;/p&gt;
 &lt;p&gt;grid item 网格项目。&lt;/p&gt;
 &lt;p&gt;grid line 构成网格结构的分界线。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/terms-grid-line-a0343f0a-7176-4aa0-be1c-89529a03ffbc-75dd4c18172ef2354f34c92af12e88c2.svg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/75dd4c18172ef2354f34c92af12e88c2/terms-grid-line-a0343f0a-7176-4aa0-be1c-89529a03ffbc.svg&quot;&gt;&lt;/p&gt;
 &lt;p&gt;grid track 两条相邻网格线之间的间距。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/terms-grid-track-2c92ad8f-eb75-4478-bd56-5c198a462fa4-0ffd815739fc50656ba53c98cd2c5e95.svg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/0ffd815739fc50656ba53c98cd2c5e95/terms-grid-track-2c92ad8f-eb75-4478-bd56-5c198a462fa4.svg&quot;&gt;&lt;/p&gt;
 &lt;p&gt;grid cell 两个相邻行和两个相邻列网格线之间的间距。是网格中的一个单元。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/terms-grid-cell-be3318de-d8a7-4d71-b482-ae5ac5984977-858b9f1a36ccfd84b6804386bcaddd8a.svg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/858b9f1a36ccfd84b6804386bcaddd8a/terms-grid-cell-be3318de-d8a7-4d71-b482-ae5ac5984977.svg&quot;&gt;&lt;/p&gt;
 &lt;p&gt;grid area 四条网格线包围的总空间。网格区域可以由任意数量的网格单元组成。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/terms-grid-area-9036ea4e-c8bf-41e9-9681-fb9a8e04c11b-fd4eb4c15ee96cda391cb869122a6b3e.svg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/fd4eb4c15ee96cda391cb869122a6b3e/terms-grid-area-9036ea4e-c8bf-41e9-9681-fb9a8e04c11b.svg&quot;&gt;&lt;/p&gt;
 &lt;h1&gt;网格容器&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;通过 display 属性设置属性值为 grid 或 inline-grid 可以创建一个网格容器。网格容器中的所有子元素就会自动变成网格项目（grid item）。&lt;/p&gt;
 &lt;h2&gt;显式网格&lt;/h2&gt;
 &lt;p&gt;使用 grid-template-columns 和 grid-template-rows 属性可以显式的设置一个网格的列和行。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;grid-template-rows 指定的每个值可以创建每行的高度。&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;grid-template-rows 指定的每个值可以创建每行的高度。&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;grid-template-columns 指定的每个值可以创建每行的列宽。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;.container&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 &lt;span class=&quot;token property&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 40px 50px auto 50px 40px&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token property&quot;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 25% 100px auto&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/template-columns-rows-01-9ff80498-a9b2-4059-bdd1-e1bca49a62b0-57713be2cf9b38a714105db8e0a517a9.svg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/57713be2cf9b38a714105db8e0a517a9/template-columns-rows-01-9ff80498-a9b2-4059-bdd1-e1bca49a62b0.svg&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;fr 单位 代表网格容器中可用的空间。&lt;/p&gt;
@@ -38,12 +104,8 @@
 &lt;p&gt;grid-template-areas&lt;/p&gt;
 &lt;p&gt;通过引用用grid - area属性指定的网格区域的名称来定义网格模板。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;minmax 通过 minmax() 函数来创建网格轨道的最小或最大尺寸。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;repeat 使用 repeat() 创建重复的网格轨道。&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;minmax 通过 minmax() 函数来创建网格轨道的最小或最大尺寸。&lt;/li&gt;
+&lt;li&gt;repeat 使用 repeat() 创建重复的网格轨道。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;间距&lt;/h2&gt;
 &lt;ul&gt;
@@ -85,7 +147,7 @@
 &lt;span class=&quot;token property&quot;&gt;grid-row-start&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; row1-start&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token property&quot;&gt;grid-row-end&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 3&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/grid-column-row-start-end-01-08ab8475-9f06-46ed-a2c0-f3c3c451e677-2ae7389f495ed49191f4bdc614afa28c.svg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2ae7389f495ed49191f4bdc614afa28c/grid-column-row-start-end-01-08ab8475-9f06-46ed-a2c0-f3c3c451e677.svg&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;项目对齐&lt;/h2&gt;
@@ -114,7 +176,7 @@
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;先写回退代码， 然后使用较新属性覆写。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;.selector {property: fallback-value;property: actual-value;}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;.selector&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; fallback-value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actual-value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;先写回退代码，然后在 &lt;code class=&quot;language-text&quot;&gt;@support&lt;/code&gt; 中覆写。如果需要的话可以在 &lt;code class=&quot;language-text&quot;&gt;@support&lt;/code&gt; 中重置属性查看效果。&lt;/p&gt;
@@ -141,7 +203,7 @@
   &gt;
     &lt;span
       class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 29.214659685863875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAABeUlEQVQY0wFuAZH+AO3GjeXRs+Tg0Ojl0eXk0+vr2uTdzefVuezFj+/hzeri0e3gze3hz+bdyerfy+7gzubczOXczOfcyerfzQDh3s/a2dHdu6zXkXzVm4/QmZDd2cfg2cjdz77d1sTW08Hezr7g0L7Z07vd0bzdybnZ0MPX08fe0bzk18QA6cq87+i427KQuGlOv3pdu3FS58O257On3HFk6a+f88/C7eDN7efT7+7b7+3a7/Dc7+jU7uTP7eXS7+bTAL+bTpDCRobEYmXAcmjAbmC6ZY94SJmFWJmHV6GQYqCOYeHaw+rdy96jk+GsnN6hkunRwO3j0uzfzu7i0ACUsyxDrFtLp1ZSrFlOqVZMrFU5ljhCnERPuGFLr1lEsVaygWe4e2ZtjUxxi05xiUp3qGl8uHh3sXKv0aIA0dOwgcODisSJisWKi8WKicWJfbN1m7+N5dzHqMqdgcKC1siw4s260t/C093A1N/D0tm80te50Na54ODGHg7+s0lL+r0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+      style=&quot;padding-bottom: 29.214659685863875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAABeUlEQVQY0wFuAZH+AO3GjeXRs+Tg0Ojl0eXk0+vr2uTdzefVuezFj+/hzeri0e3gze3hz+bdyerfy+7gzubczOXczOfcyerfzQDh3s/a2dHdu6zXkXzVm4/QmZDd2cfg2cjdz77d1sTW08Hezr7g0L7Z07vd0bzdybnZ0MPX08fe0bzk18QA6cq87+i427KQuGlOv3pdu3FS58O257On3HFk6a+f88/C7eDN7efT7+7b7+3a7/Dc7+jU7uTP7eXS7+bTAL+bTpDCRobEYmXAcmjAbmC6ZY94SJmFWJmHV6GQYqCOYeHaw+rdy96jk+GsnN6hkunRwO3j0uzfzu7i0ACUsyxDrFtLp1ZSrFlOqVZNrFU7ljhCnERPuGFLr1lEsVaygWe4e2ZtjUxxi05xiUp3qGl8uHh3sXKv0aIA0dOwgcODisSJisWKi8WKicWJfbN1m7+N5dzHqMqdgcKC1siw4s260t/C093A1N/D0tm80te50Na54ODGH0b+tsRegREAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
     &gt;
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -174,9 +236,9 @@
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; table-cell&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; and &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; list-item&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;or 操作符&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;token property&quot;&gt;transform-style&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; preserve &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; or &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;token property&quot;&gt;-moz-transform-style&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; preserve &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;参考
-&lt;a href=&quot;http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CSS Grid 网格布局教程&lt;/a&gt;
-&lt;a href=&quot;https://css-tricks.com/snippets/css/complete-guide-grid&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;A Complete Guide to Grid&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[sass 概述]]></title><description><![CDATA[sass 是现在非常流行的 css 预处理器，本文介绍了一些 sass 的基础用法。使用变量sass 使用来标识变量。比如 变量可以在 css 规则块定义之外存在。如果变量定义在块内，就只能在块内使用。sass 中声明变量时，也可以引用其他变量嵌套 css…]]></description><link>https://memory9.github.io//sass-learning/</link><guid isPermaLink="false">https://memory9.github.io//sass-learning/</guid><pubDate>Mon, 16 Sep 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;sass 是现在非常流行的 css 预处理器，本文介绍了一些 sass 的基础用法。&lt;/p&gt;
+&lt;h2&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CSS Grid 网格布局教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://css-tricks.com/snippets/css/complete-guide-grid&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;A Complete Guide to Grid&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[sass 概述]]></title><description><![CDATA[sass 是现在非常流行的 css 预处理器，本文介绍了一些 sass 的基础用法。 使用变量 sass 使用来标识变量。比如  变量可以在 css 规则块定义之外存在。如果变量定义在块内，就只能在块内使用。 sass 中声明变量时，也可以引用其他变量 嵌套 css…]]></description><link>https://memory9.github.io/sass-learning/</link><guid isPermaLink="false">https://memory9.github.io/sass-learning/</guid><pubDate>Mon, 16 Sep 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;sass 是现在非常流行的 css 预处理器，本文介绍了一些 sass 的基础用法。&lt;/p&gt;
 &lt;h2&gt;使用变量&lt;/h2&gt;
 &lt;p&gt;sass 使用&lt;code class=&quot;language-text&quot;&gt;$&lt;/code&gt;来标识变量。比如 &lt;code class=&quot;language-text&quot;&gt;$basic-border: 1px solid black;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;变量可以在 css 规则块定义之外存在。如果变量定义在块内，就只能在块内使用。&lt;/p&gt;
@@ -259,10 +321,8 @@
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;导入 sass 文件&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;使用 sass 部分文件
-sass 局部文件的文件名以下划线开头。这样，sass 就不会在编译时单独编译这个文件输出 css，而只把这个文件用作导入。比如要导入一个&lt;code class=&quot;language-text&quot;&gt;_night-sky.scss&lt;/code&gt;的文件，只需要在样式表中写&lt;code class=&quot;language-text&quot;&gt;@import &amp;#39;night-sky&amp;#39;&lt;/code&gt;。&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;使用 sass 部分文件
+sass 局部文件的文件名以下划线开头。这样，sass 就不会在编译时单独编译这个文件输出 css，而只把这个文件用作导入。比如要导入一个&lt;code class=&quot;language-text&quot;&gt;_night-sky.scss&lt;/code&gt;的文件，只需要在样式表中写&lt;code class=&quot;language-text&quot;&gt;@import &amp;#39;night-sky&amp;#39;&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;默认变量值
 一般情况下，你反复声明一个变量，只有最后一处声明有效且它会覆盖前边的值。
@@ -272,13 +332,9 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
     &lt;span class=&quot;token property&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$fancy-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;嵌套导入
-跟原生的 css 不同，sass 允许&lt;code class=&quot;language-text&quot;&gt;@import&lt;/code&gt;命令写在 css 规则内。这种导入方式下，生成对应的 css 文件时，局部文件会被直接插入到 css 规则内导入它的地方。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;原生的 css 导入&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;嵌套导入
+跟原生的 css 不同，sass 允许&lt;code class=&quot;language-text&quot;&gt;@import&lt;/code&gt;命令写在 css 规则内。这种导入方式下，生成对应的 css 文件时，局部文件会被直接插入到 css 规则内导入它的地方。&lt;/li&gt;
+&lt;li&gt;原生的 css 导入&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;注释&lt;/h2&gt;
 &lt;p&gt;sass 另外提供了一种不同于 css 标准注释格式&lt;code class=&quot;language-text&quot;&gt;/* ... */&lt;/code&gt;的注释语法，即静默注释，其内容不会出现在生成的 css 文件中。静默注释的语法跟 JavaScript、Java 等类 C 的语言中单行注释的语法相同，它们以&lt;code class=&quot;language-text&quot;&gt;//&lt;/code&gt;开头，注释内容直到行末。&lt;/p&gt;
@@ -302,14 +358,10 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
     &lt;span class=&quot;token keyword&quot;&gt;@include&lt;/span&gt; rounded-corners&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;是否使用混合器
-判断一组属性是否应该组合成一个混合器，一条经验法则就是能否为这个混合器想出一个好的名字。。。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;混合器中的 css 规则
-混合器中除了可以包含属性，还可以包含 css 规则。&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;是否使用混合器
+判断一组属性是否应该组合成一个混合器，一条经验法则就是能否为这个混合器想出一个好的名字。。。&lt;/li&gt;
+&lt;li&gt;混合器中的 css 规则
+混合器中除了可以包含属性，还可以包含 css 规则。&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;混合器的传参
 混合器并不一定总得生成相同的样式。可以通过在&lt;code class=&quot;language-text&quot;&gt;@include&lt;/code&gt;混合器时给混合器传参，来定制混合器生成的精确样式。&lt;/p&gt;
@@ -331,10 +383,8 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
     &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;默认参数
-为了在&lt;code class=&quot;language-text&quot;&gt;@include&lt;/code&gt;混合器时不必传入所有的参数，我们可以给参数指定一个默认值。参数默认值使用&lt;code class=&quot;language-text&quot;&gt;$name: default-value&lt;/code&gt;的声明形式，默认值可以是任何有效的 css 属性值，甚至是其他参数的引用。&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;默认参数
+为了在&lt;code class=&quot;language-text&quot;&gt;@include&lt;/code&gt;混合器时不必传入所有的参数，我们可以给参数指定一个默认值。参数默认值使用&lt;code class=&quot;language-text&quot;&gt;$name: default-value&lt;/code&gt;的声明形式，默认值可以是任何有效的 css 属性值，甚至是其他参数的引用。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;选择器继承&lt;/h2&gt;
 &lt;p&gt;选择器继承是说一个选择器可以继承为另一个选择器定义的所有样式。&lt;/p&gt;
@@ -346,7 +396,7 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
   &lt;span class=&quot;token selector&quot;&gt;.seriousError &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;@extend&lt;/span&gt; .error&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;token property&quot;&gt;border-width&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 3px&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[exploring npm]]></title><description><![CDATA[npm 是目前默认的 Node 包管理工具，在 javaScript 项目开发中得到了广泛使用。node_modulesnpm…]]></description><link>https://memory9.github.io//exploring-npm/</link><guid isPermaLink="false">https://memory9.github.io//exploring-npm/</guid><pubDate>Fri, 05 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;npm 是目前默认的 Node 包管理工具，在 javaScript 项目开发中得到了广泛使用。&lt;/p&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[exploring npm]]></title><description><![CDATA[npm 是目前默认的 Node 包管理工具，在 javaScript 项目开发中得到了广泛使用。 node_modules npm…]]></description><link>https://memory9.github.io/exploring-npm/</link><guid isPermaLink="false">https://memory9.github.io/exploring-npm/</guid><pubDate>Fri, 05 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;npm 是目前默认的 Node 包管理工具，在 javaScript 项目开发中得到了广泛使用。&lt;/p&gt;
 &lt;h2&gt;node_modules&lt;/h2&gt;
 &lt;p&gt;npm 使用 &lt;code class=&quot;language-text&quot;&gt;npm install&lt;/code&gt; 命令安装模块到&lt;code class=&quot;language-text&quot;&gt;node_modules&lt;/code&gt; 目录下。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;packageName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -409,9 +459,7 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;p&gt;bundledDependencies / bundleDependencies 打包依赖&lt;/p&gt;
 &lt;p&gt;这种依赖跟 &lt;code class=&quot;language-text&quot;&gt;npm pack&lt;/code&gt; 打包命令相关，必须先在前两种依赖中声明。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;optionalDependencies 可选依赖&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;optionalDependencies 可选依赖&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;依赖包的版本号&lt;/h3&gt;
 &lt;p&gt;采用 &lt;a href=&quot;https://semver.org/lang/zh-CN/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;semver&lt;/a&gt; 规范作为依赖版本管理方案，格式一般为：&lt;strong&gt;主版本号.次版本号.修订号(x.y.z)&lt;/strong&gt;&lt;/p&gt;
@@ -434,15 +482,9 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;/ul&gt;
 &lt;p&gt;常见的版本格式：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;”1.2.3” 精确版本号&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;“^1.2.3” ^ 能够兼容除了最左侧非 0 版本号之外的其他变化&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;“~1.2.3” ~ 如果列出了次版本号，那么只兼容补丁的修改；如果没有列出次版本号，那么兼容 2、3 位的修改&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;”1.2.3” 精确版本号&lt;/li&gt;
+&lt;li&gt;“^1.2.3” ^ 能够兼容除了最左侧非 0 版本号之外的其他变化&lt;/li&gt;
+&lt;li&gt;“~1.2.3” ~ 如果列出了次版本号，那么只兼容补丁的修改；如果没有列出次版本号，那么兼容 2、3 位的修改&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;“1.x”、“1.X”、“1.&lt;em&gt;”、“1”、“\&lt;/em&gt;”&lt;/p&gt;
 &lt;blockquote&gt;
@@ -492,7 +534,7 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;p&gt;process.argv属性返回一个数组，这个数组包含了启动node进程时的命令行参数。第一个元素为启动node 进程的可执行文件的绝对路径名&lt;a href=&quot;https://link.juejin.im?target=http%3A%2F%2Fnodejs.cn%2Fapi%2Fprocess.html%23process_process_execpath&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;process.execPath&lt;/a&gt;，第二个元素为当前执行的JavaScript文件路径。剩余的元素为其他命令行参数。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run serve --params     &lt;span class=&quot;token comment&quot;&gt;# 参数params将转化成process.env.npm_config_params = true&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run serve --params&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;123 &lt;span class=&quot;token comment&quot;&gt;# 参数params将转化成process.env.npm_config_params = 123&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run serve --params&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;123&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# 参数params将转化成process.env.npm_config_params = 123&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run serve -params      &lt;span class=&quot;token comment&quot;&gt;# 等同于--params参数&lt;/span&gt;
 
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run serve -- --params  &lt;span class=&quot;token comment&quot;&gt;# 将--params参数添加到process.env.argv数组中&lt;/span&gt;
@@ -500,8 +542,8 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run serve -- params    &lt;span class=&quot;token comment&quot;&gt;# 将params参数添加到process.env.argv数组中&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;通配符&lt;/h3&gt;
 &lt;p&gt;npm 脚本即 Shell 脚本，所以可以使用 Shell 通配符。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;lint&quot;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;jshint *.js&quot;&lt;/span&gt;
-&lt;span class=&quot;token string&quot;&gt;&quot;lint&quot;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;jshint **/*.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;lint&quot;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;jshint *.js&quot;&lt;/span&gt;
+&lt;span class=&quot;token string&quot;&gt;&quot;lint&quot;&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;jshint **/*.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;*&lt;/code&gt; 表示任意文件名，&lt;code class=&quot;language-text&quot;&gt;**&lt;/code&gt; 表示任意一层子目录。&lt;/p&gt;
 &lt;h3&gt;多命令运行&lt;/h3&gt;
 &lt;h4&gt;串行执行&lt;/h4&gt;
@@ -524,12 +566,8 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;h2&gt;npm 配置项&lt;/h2&gt;
 &lt;h3&gt;优先级&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Command Line&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;env 环境变量&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Command Line&lt;/li&gt;
+&lt;li&gt;env 环境变量&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;npmrc 文件&lt;/p&gt;
 &lt;ul&gt;
@@ -551,10 +589,10 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;li&gt;set&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# 如果 key 不存在，那么会将新增到配置中；如果省略 value，那么会将 key 设置为 true&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;key&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;value&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;-g&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;--global&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;key&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;value&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;-g&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;--global&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# 指定 npm 包来源&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; registry &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;url&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; registry &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;url&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;get&lt;/li&gt;
 &lt;/ul&gt;
@@ -576,7 +614,7 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;h3&gt;项目版本号管理&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; 中的 &lt;code class=&quot;language-text&quot;&gt;version&lt;/code&gt; 字段代表的是该项目的版本号。&lt;/p&gt;
 &lt;p&gt;尽量使用 &lt;code class=&quot;language-text&quot;&gt;npm version&lt;/code&gt; 指令来自动更新 &lt;code class=&quot;language-text&quot;&gt;version&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; version &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;1.2.3  &lt;span class=&quot;token comment&quot;&gt;# 显示设置版本号为 1.2.3 &lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; version &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;v&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.2&lt;/span&gt;.3  &lt;span class=&quot;token comment&quot;&gt;# 显示设置版本号为 1.2.3 &lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; version major  &lt;span class=&quot;token comment&quot;&gt;# 大版本号加 1，其余版本号归 0&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; version minor  &lt;span class=&quot;token comment&quot;&gt;# 小版本号加 1，修订号归 0&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; version patch  &lt;span class=&quot;token comment&quot;&gt;# 修订号加 1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -591,8 +629,8 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; version minor -m &lt;span class=&quot;token string&quot;&gt;&quot;feat(version): upgrade to %s for reasons&quot;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# %s 会自动替换为新版本号&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果不想在 git 仓库中打上版本 tag，可以在指令中使用 &lt;code class=&quot;language-text&quot;&gt;--no-git-tag-version&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;如果想默认不影响 git 仓库，可以在 npm 设置中禁止：&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; git-tag-version &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# 不自动打 tag&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; commit-hooks &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;    &lt;span class=&quot;token comment&quot;&gt;# 不自动 commit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; git-tag-version &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# 不自动打 tag&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; commit-hooks &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;    &lt;span class=&quot;token comment&quot;&gt;# 不自动 commit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;域级包管理&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; 中的依赖有两种形式：&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token property&quot;&gt;&quot;devDependencies&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -628,21 +666,15 @@ sass 局部文件的文件名以下划线开头。这样，sass 就不会在编�
 &lt;/ol&gt;
 &lt;h3&gt;依赖锁定&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm&lt;/code&gt; 默认安装模块时，会通过脱字符 &lt;code class=&quot;language-text&quot;&gt;^&lt;/code&gt; 来限定所安装模块的主版本号。可以配置 &lt;code class=&quot;language-text&quot;&gt;npm&lt;/code&gt; 通过波浪符 &lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt; 来限定安装模块版本号：&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; save-prefix&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;~&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; save-prefix&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;~&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;也可以配置仅安装精确版本号的模块&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token keyword&quot;&gt;set&lt;/span&gt; save-exact &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; save-exact &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;参考&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;https://juejin.im/post/5d08d3d3f265da1b7e103a4d&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;前端工程化（5）：你所需要的npm知识储备都在这了&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2016/01/npm-install.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;npm 模块安装机制简介&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;npm scripts 使用指南&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Flexbox 布局]]></title><description><![CDATA[Flex 是 Flexible Box 的缩写，意为弹性布局。Flex 布局适用于应用程序的组件和小规模布局。基本概念采用 Flex 布局的元素称为 flex 容器（flex container），而其子元素则称为 flex 项目（flex items）。flex box…]]></description><link>https://memory9.github.io//flex-box/</link><guid isPermaLink="false">https://memory9.github.io//flex-box/</guid><pubDate>Thu, 16 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Flex 是 Flexible Box 的缩写，意为弹性布局。Flex 布局适用于应用程序的组件和小规模布局。&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://juejin.im/post/5d08d3d3f265da1b7e103a4d&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;前端工程化（5）：你所需要的npm知识储备都在这了&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2016/01/npm-install.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;npm 模块安装机制简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;npm scripts 使用指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Flexbox 布局]]></title><description><![CDATA[Flex 是 Flexible Box 的缩写，意为弹性布局。Flex 布局适用于应用程序的组件和小规模布局。 基本概念 采用 Flex 布局的元素称为 flex 容器（flex container），而其子元素则称为 flex 项目（flex items）。 flex box…]]></description><link>https://memory9.github.io/flex-box/</link><guid isPermaLink="false">https://memory9.github.io/flex-box/</guid><pubDate>Thu, 16 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Flex 是 Flexible Box 的缩写，意为弹性布局。Flex 布局适用于应用程序的组件和小规模布局。&lt;/p&gt;
 &lt;h1&gt;基本概念&lt;/h1&gt;
 &lt;p&gt;采用 Flex 布局的元素称为 flex 容器（flex container），而其子元素则称为 flex 项目（flex items）。&lt;/p&gt;
 &lt;!--more--&gt;
