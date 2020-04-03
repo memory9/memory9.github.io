@@ -307,6 +307,28 @@ Promise 构造函数传入的参数是一个执行函数。
       })
     }
 
+    // 全部完成才完成，一个 reject 直接 reject
+    promise.all = function(promiseArr) {
+      return new Promise((resolve, reject) => {
+        // 结果数组
+        let res = []
+        let count = 0
+        function handleData(index, data) {
+          count++
+          res[index] = data
+          if (count === promiseArr.length) {
+            resolve(res)
+          }
+        }
+
+        for (let i = 0; i < promiseArr.length; i++) {
+          Promise.resolve(promiseArr[i]).then((data) => {
+            handleData(i, data)
+          }, reject)
+        }
+      })
+    }
+
     fn(resolve, reject)
   }
 ```
