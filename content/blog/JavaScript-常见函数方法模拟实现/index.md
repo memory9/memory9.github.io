@@ -330,6 +330,7 @@ Promise 构造函数传入的参数是一个执行函数。
     }
 
     fn(resolve, reject)
+    return this
   }
 ```
 
