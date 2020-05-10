@@ -192,6 +192,74 @@ description: 本文记录常见的排序算法及其实现思路与代码。
 
 ### 堆排序
 
-### 桶排序
+  **基本思想**
 
-## 总结
+  堆可以视为一棵完全的二叉树（除了最底层之外，每一层都是满的），因此堆可以用数组来表示，每一个节点对应数组中的一个元素。
+
+  在数组起始位置为 0 时
+
+  父节点 i 的左子节点在位置`2*i+1`
+
+  父节点 i 的右子节点在位置`2*i+2`
+
+  子节点 i 的父节点在位置`Math.floor((i - 1) / 2)`
+
+  **实现**
+
+  最大堆调整（Max-Heapify）：从堆的末端**非叶子节点**开始作调整，使得子节点永远小于父节点
+
+  创建最大堆（Build-Max-Heap）：将堆所有数据重新排序，使其成为最大堆
+
+  堆排序（Heap-Sort）：移除位在第一个数据的根节点，并做最大堆调整的递归运算
+
+  **代码**
+
+  ```js
+  function heapSort(arr) {
+    const len = arr.length
+
+    if (len <= 1) {
+      return arr
+    }
+
+    // 建立小顶堆
+    for (let i = Math.floor(len / 2 - 1); i >= 0; i--) {
+      minHeapify(arr, i, len)
+    }
+
+    // 排序
+    for (let j = 0; j < len; j++) {
+      // 把最小值放到最末
+      [arr[0], arr[len - 1 - j]] = [arr[len - 1 - j], arr[0]]
+      minHeapify(arr, 0, len - 2 - j)
+    }
+
+    return arr
+  }
+
+  function minHeapify(arr, index, length) {
+    const left = index * 2 + 1, right = index * 2 + 2
+    let minIndex = index
+
+    if (left <= length && arr[left] < arr[minIndex]) {
+      minIndex = left
+    }
+
+    if (right <= length && arr[right] < arr[minIndex]) {
+      minIndex = right
+    }
+
+    if (minIndex !== index) {
+      [arr[index], arr[minIndex]] = [arr[minIndex], arr[index]]
+      minHeapify(arr, minIndex, length)
+    }
+  }
+
+  heapSort([2, 1, 7, 9, 5, 8]) // [9, 8, 7, 5, 2, 1]
+  ```
+
+  **算法分析**
+
+  时间复杂度：O(nlogn)
+
+### 桶排序
